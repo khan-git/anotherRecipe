@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv" manifest="/manifest.appcache">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>Receptakuten</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='bilder/apple-touch-icon.png')}}">
+        <link rel="icon" type="image/png" href="{{url_for('static', filename='bilder/favicon-32x32.png')}}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{url_for('static', filename='bilder/favicon-16x16.png')}}" sizes="16x16">
+        <link rel="manifest" href="{{url_for('static', filename='manifest.json')}}">
+        <link rel="mask-icon" href="{{url_for('static', filename='bilder/safari-pinned-tab.svg')}}" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{{url_for('static', filename='jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='local.css')}}">
+		<script src="{{url_for('static', filename='jquery-1.11.3.min.js')}}"></script>
+		<script src="{{url_for('static', filename='jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js')}}"></script>
+		<script src="{{url_for('static', filename='online.js')}}" ></script>
+		<script src="{{url_for('static', filename='local.js')}}" ></script>
+    </head>
+	<body>
+		<div data-role="page" id="{% block pageId %}{% endblock %}">
+            {% block panel %}
+            <div data-role="panel" id="mainMenuPanel" class="nav-panel">
+                <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">Meny</li>
+                        <li class="onlineonly"><a href="/search" class="ui-btn">Sök</a></li>
+                        <li class="onlineonly"><a href="/help" class="ui-btn">Hjälp</a></li>
+                        <li><a href="/" class="ui-btn">Hem</a></li>
+                        <li><a href="/fromTheFridge" class="ui-btn">Frysen</a></li>
+                        <li class="onlineonly"><a href="/menuSuggestion" class="ui-btn">Förslag</a></li>
+                        <li class="onlineonly"><a href="/groceryList" class="ui-btn">Inköpslista</a></li>
+                        <li class="onlineonly"><a href="/newRecipe" class="ui-btn">Lägg till</a></li>
+                        <li><a href="/favourite" class="ui-btn">Favoriter</a></li>
+                </ul>
+            </div>
+            {% endblock %}
+			<div data-role="header" data-position="fixed">
+				{% block header %}
+                <h1>Receptakuten</h1>
+                <a href="#{% block popupMenuIdA %}{% endblock %}" data-rel="popup" data-transition="slidedown" class="ui-btn ui-btn-inline ui-btn-right ui-btn-icon-right ui-icon-bars ui-btn-icon-notext ui-corner-all" id="popupMenuBtn">Meny</a>
+                <div data-role="popup" id="{% block popupMenuIdD %}{% endblock %}" data-theme="b">
+                    <ul data-role="listview" data-inset="true" style="min-width: 210px;">
+                        <li data-role="list-divider">Meny</li>
+                        <li class="onlineonly"><a href="/search" class="ui-btn">Sök</a></li>
+                        <li class="onlineonly"><a href="/help" class="ui-btn">Hjälp</a></li>
+                        <li><a href="/" class="ui-btn">Hem</a></li>
+                        <li><a href="/fromTheFridge" class="ui-btn">Frysen</a></li>
+                        <li class="onlineonly"><a href="/menuSuggestion" class="ui-btn">Förslag</a></li>
+                        <li class="onlineonly"><a href="/groceryList" class="ui-btn">Inköpslista</a></li>
+                        <li class="onlineonly"><a href="/newRecipe" class="ui-btn">Lägg till</a></li>
+                        <li><a href="/favourite" class="ui-btn">Favoriter</a></li>
+                    </ul>
+                </div>
+                {% endblock %}
+			</div>
+			<div data-role="main" class="ui-content" >
+                {% block article %}
+                {% endblock %}
+			</div>
+            {% block footer %}
+            <div data-role="footer">
+            </div>
+            {% endblock %}
+		</div>
+	</body>
+</html>

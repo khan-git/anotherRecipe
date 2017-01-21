@@ -1,0 +1,36 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+                <div data-role="navbar">
+                    <ul>
+                        <li></li>
+                        <li><h3>{{title}}</h3></li>
+                        <li><a href="/editRecipe?recipeKey={{key}}" class="ui-btn ui-btn-icon-right ui-btn-icon-notext ui-icon-gear ui-corner-all ui-btn-inline ui-btn-right">Editera</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rating">{{rating}}</div>
+                <div class="ui-grid-b">
+                    <h4 class="ui-block-a">Portioner</h4>
+                    <select class="ui-block-b myportions" data-mini="true" data-inline="true">
+                    {% for num in range(1, 25) %}
+                        <option value="{{num}}" {% if num == portions %}selected {% endif %}>{{num}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="foodImage">{{foodImage}}</div>
+                <div class="ingredients">
+                    <ul>
+                        {% for item in ingredients %}
+                            <li><span class="amountValue">{{item['amount']}}</span> {{item['measurement']}} {{item['ingredient']}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="instructions">{{instructions}}</div>
+{% endblock %}
+{% block footer %}{% endblock %}

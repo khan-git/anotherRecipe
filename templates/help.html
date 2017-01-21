@@ -1,0 +1,38 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+        <h1>Hjälp</h1>
+        <h3>Meny</h3>
+        <p>I menyn finns följande alternativ:</p>
+        <dl>
+            <dt>Sök</dt>
+            <dd>Söka efter recept.</dd>
+            <dt>Hjälp</dt>
+            <dd>Denna sida med förklaring om menyn.</dd>
+            <dt>Hem</dt>
+            <dd>Första sidan som inte säger så mycket.</dd>
+            <dt>Frysen</dt>
+            <dd>En lista på mat du har kvar i frysen redo att värmas när tiden inte räcker till.</dd>
+            <dt>Förslag</dt>
+            <dd>Ger slumpvisa förslag på recept att tillaga. Klicka på ett recept för mer detaljer.</dd>
+            <dt>Inköpslista</dt>
+            <dd>Har kan du skapa en lista av ingredienser för att skicka vidare till någon som handlar det åt dig. Bocka för ingredienserna och sedan klicka på "Skicka". Välj mellan att markera listan för kopiering, skicka med e-post eller skicka som sms.</dd>
+            <dt>Lägg till</dt>
+            <dd>Skriv in nya recept.</dd>
+            <dt>Favoriter</dt>
+            <dd>Välj ut de recept du har som favoriter.</dd>
+        </dl>
+        <h3>Ändra portioner</h3>
+        <p>Mängderna av varje ingrediens justeras när portioner ändras.</p>
+        <h3>Ändra recept</h3>
+        <p>När ett recept visas kan det öppnas för justering genom att klicka på det lilla kugghjulet.</p>
+        <h3>Offline läge</h3>
+        <p>Utan nätverk fungerar endast frysen och favoriter.</p>
+{% endblock %}
+{% block footer %}
+{% endblock %}

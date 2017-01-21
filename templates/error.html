@@ -1,0 +1,14 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+    <h1>Något gick fel!!</h1>
+    <div id="message">
+        {{message}}
+    </div>
+{% endblock %}
+{% block footer %}{% endblock %}

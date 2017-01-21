@@ -1,0 +1,80 @@
+div .instructions {
+   white-space: pre-wrap;
+}
+
+.portions {
+    width: 3em !important;
+}
+.amount {
+    width: 3em !important;
+}
+
+.measurement {
+	width: 3em !important;
+}
+.ingredient {
+    width: 8em !important;
+}
+
+.right-btn {
+    position: absolute;
+    right: 0px;
+}
+
+dt {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.fridge-grid-b .ui-block-a {
+	width: 10%;
+    float: left;
+}
+
+.fridge-grid-b .ui-block-b {
+	width: 75%;
+    float: left;
+}
+
+.fridge-grid-b .ui-block-c {
+	width: 10%;
+    float: left;
+}
+
+@media (min-width: 35em) {
+    #popupMenuBtn {
+        visibility: hidden;
+    }
+    .nav-panel {
+        visibility: visible;
+        position: relative;
+        left: 0;
+        clip: initial;
+        float: left;
+        width: 25%;
+        background: none;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        transition: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        transform: none !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .ui-panel-page-content-open.ui-panel-page-content-position-left {
+		margin-right: 17em;
+	}
+	.ui-panel-page-content-open.ui-panel-page-content-position-right {
+		margin-left: 17em;
+	}
+	.ui-panel-page-content-open {
+		width: auto;
+	}
+
+	/* disable "dismiss" on wide viewports */
+	.ui-panel-dismiss {
+		display: none;
+	}
+}

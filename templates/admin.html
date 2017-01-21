@@ -1,0 +1,22 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+                <div id="control" data-role="navbar" data-grid="b">
+                    <ul>
+                        <li><a class="ui-btn ui-btn-icon-left ui-icon-clock" id="backupdb">Backup</a></li>
+                        <li><a href="{{url_for('prepdb')}}" class="ui-btn ui-btn-icon-left ui-icon-clock" id="backupdb">Init DB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Status</h3>
+                    <div id="status">
+                    </div>
+                </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

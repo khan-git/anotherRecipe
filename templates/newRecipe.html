@@ -1,0 +1,83 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+                <h4>Titel:</h4>
+                <form action="/saveRecipe" method="POST" enctype="multipart/form-data" data-ajax="false">
+                    <input type="text" placeholder="Titel" id="titel" name="title" value="{{recipe['title'] if recipe != None else ''}}">
+                    {% if recipe !=  None%}
+                    <input type="hidden" value="{{recipe['key']}}" name="recipeKey">
+                    {% endif %}
+                    <div class="ui-grid-a">
+                            <div class="ui-block-a"><h4>Portioner</h4></div>
+                            <div class="ui-block-b"><input data-inline="true" type="number" name="portions" placeholder="4" value="{{recipe['portions'] if recipe != None else '4'}}" data-wrapper-class="portions"></div>
+                    </div>
+                    <h4>Ingredienser:</h4>
+                    <div class="ui-grid-d" id="ingredientsList">
+                        {% if ingredients != None%}
+                        {% for ingredient in ingredients %}
+                            <div class="ingredientsContainer">
+                                <div class="ui-block-a">
+                                    <input type="text" name="amount" value="{{ingredient['amount']}}" readonly data-wrapper-class="amount">
+                                </div>
+                                <div class="ui-block-b">
+                                <input type="text" name="measurement" value="{{ingredient['measurement']}}" readonly data-wrapper-class="measurement">
+                                </div>
+                                <div class="ui-block-c">
+                                <input type="text" name="ingredient" value="{{ingredient['ingredient']}}" readonly data-wrapper-class="ingredient">
+                                </div>
+                                <div class="ui-block-d">
+                                    <a href="#" data-role="button" data-icon="delete" data-iconpos="notext" class="ingredientDelete">Delete</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <a href="#popupIngredient" data-rel="popup" data-role="button" id="addIngredient" data-icon="plus" data-inline="true">Lägg till ingrediens</a>
+                    <div data-role="popup" id="popupIngredient">
+                        <div data-role="header" data-theme="a">
+                        <h1>Ny ingrediens</h1>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a"><input type="number" placeholder="100" id="amount"></div>
+                            <div class="ui-block-b"><button>Mängd</button></div>
+
+                            <div class="ui-block-a">
+                            <select id="measurement">
+                            {% for measure in measurements %}
+                                <option value="{{measure[0]}}">{{measure[0]}}</option>
+                            {% endfor %}
+                            </select>
+                            </div>
+                            <div class="ui-block-b"><button>Mått</button></div>
+
+                        </div>
+                        <input data-type="search" placeholder="Sök ingrediens" id="searchPattern">
+                        <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#ingredient" data-inset="true" id="searchResult">
+                        </ul>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" >Avbryt</a></div>
+                            <div class="ui-block-b"><a href="#" data-role="button" data-theme="a" data-icon="check" id="popupAdd">Lägg till</a></div>
+                        </div>
+                    </div>
+                    <h4>Instruktioner:</h4>
+                    <textarea placeholder="Instruktioner" id="instructions" name="instructions">{{recipe['instructions'] if recipe != None else ''}}</textarea>
+
+                    <div data-role="controlgroup" >
+                        <button type="submit" value="Spara" class="ui-btn ui-btn-icon-left ui-icon-check ui-btn-inline">Hello</button>
+                        <a class="ui-btn ui-btn-icon-left ui-icon-check ui-btn-inline" id="saveRecipe">Spara</a>
+                        <a data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-delete ui-btn-inline">Avbryt</a>
+                    </div>
+                </form>
+
+                <div data-role="popup" id="popupInfo" class="ui-content" data-theme="b">
+                    <div role="main" class="ui-content" id="popupContent">
+                    </div>
+                </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

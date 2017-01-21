@@ -1,0 +1,41 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block panel %}
+{{super()}}
+<div data-role="panel" id="addFridgePanel" class="addFavouritsPanel" data-position="right" data-display="overlay" data-type="horizontal" data-mini="true">
+    <h4>Recept
+    <a data-rel="close" id="addFridgePanelClose" class="ui-btn ui-btn-icon-left ui-icon-check ui-btn-left ui-corner-all ui-btn-inline">Spara</a>
+
+    <a data-rel="close" class="ui-btn ui-btn-icon-right ui-icon-delete ui-btn-right ui-corner-all ui-btn-inline">Avbryt</a>
+    </h4>
+    <ul data-role="listview" id="addFridgeContent"></ul>
+</div>
+{% endblock %}
+{% block article %}
+    <h3>Följande finns i frysen:</h3>
+    <a href="#addFridgePanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-right ui-btn-icon-left ui-icon-bullets ui-btn-icon-notext" id="addFavouritsPanelBtn">Välj favoriter</a>
+    <div data-role="popup" id="decreasePortionPopup" data-theme="b">
+        <div data-role="header">
+        <h3>Ta bort portioner</h3>
+                <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete ui-btn-icon-notext ui-btn-right" data-rel="back">Stäng</a>
+        </div>
+        <div data-role="main" class="ui-content">
+            <select>
+            </select>
+            <div data-role="controlgroup" >
+                <a data-rel="back" class="ui-btn ui-btn-icon-left ui-icon-check ui-btn-inline" id="updatePortions">Spara</a>
+                <a data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-delete ui-btn-inline">Avbryt</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fridge-grid-b" id="fridgeList">
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

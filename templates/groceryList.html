@@ -1,0 +1,64 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+    <div data-role="navbar">
+     <ul>
+         <li></li>
+         <li><a href="#popupReadyList" data-rel="popup" data-transition="flip" data-role="button" id="sendGroceryList" data-icon="bars">Skicka</a>
+         <li></li>
+     </ul>
+    </div>
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+    <form action="#">
+    {% for item in recipes %}
+    <div data-role="collapsible" class="recipe">
+        <h4>{{item['title']}}</h4>
+        <label for="portions{{item['key']}}">Portioner:</label>
+        <input type="range" name="portions" id="portions{{item['key']}}" min="1" max="25" value="{{item['portions']}}" data-oldportions="4" class="portionsSlider">
+        <div data-role="controlgroup">
+            <button data-icon="check" data-inline="true" class="all-ingredients-button">Alla</button>
+            <button data-icon="delete" data-inline="true" data-iconpos="right" class="no-ingredients-button">Ingen</button>
+            </div>
+        <fieldset data-role="controlgroup">
+        {%for ingredient in ingredients[item['key']] %}
+            <input type="checkbox" class="ingredientsCheckbox" name="recipe_{{item['key']}}_{{loop.index0}}" id="recipe_{{item['key']}}_{{loop.index0}}">
+            <label for="recipe_{{item['key']}}_{{loop.index0}}" >
+                <span class="amountValue">{{ingredient['amount']}}</span> <span class="measurementValue">{{ingredient['measurement']}}</span> <span class="ingredientValue">{{ingredient['ingredient']}}</span>
+            </label>
+        {% endfor %}
+        </fieldset>
+    </div>
+    {% endfor %}
+    </form>
+
+    <div data-role="popup" id="popupReadyList" data-theme="b">
+        <div data-role="header">
+        <h3>Inköpslistan</h3>
+                <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete ui-btn-icon-notext ui-btn-right" data-rel="back">Stäng</a>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>Klicka på en av knapparna för att skicka listan.</p>
+            <div data-role="navbar">
+                <ul>
+                <li><a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-cloud ui-shadow ui-btn-inline" id="selectListButton">Välj</a></li>
+                <li><a href="mailto:?body=Hello" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-cloud ui-shadow ui-btn-inline" id="sendMail">E-post</a></li>
+                <li><a href="sms:?body=hello" class="ui-btn ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-mail" id="sendSms">SMS</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div class="ui-grid-c">
+                <div class="ui-block-a"></div>
+                <div class="ui-block-b"><pre id="readyList">
+                </pre></div>
+                <div class="ui-block-c"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

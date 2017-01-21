@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# something long 132
+{{url_for('static', filename='jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css')}}
+{{url_for('static', filename='local.css')}}
+{{url_for('static', filename='jquery-1.11.3.min.js')}}
+{{url_for('static', filename='jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js')}}
+{{url_for('static', filename='local.js')}}
+{{url_for('favourite')}}
+{{url_for('fromTheFridge')}}
+{{url_for('index')}}
+
+NETWORK:
+/show
+/admin
+*
+
+FALLBACK:
+{{url_for('static', filename='online.js')}} {{url_for('static', filename='offline.js')}}
+

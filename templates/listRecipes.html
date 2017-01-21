@@ -1,0 +1,22 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+        {% if refresh|length > 0 %}
+            <h2>{{title|safe}}<a id="refreshButton" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-right ui-btn-icon-left ui-icon-refresh ui-btn-icon-notext" >Ladda om</a></h2>
+        {% endif %}
+
+        <div  id="listedRecipes">
+            <ul data-role="listview">
+            {% for item in lastRecipes %}
+                <li><a href="/show/recipe?recipe={{item['key']}}">{{item['title']}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

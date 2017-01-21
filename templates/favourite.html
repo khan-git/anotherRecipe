@@ -1,0 +1,25 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block panel %}
+{{super()}}
+<div data-role="panel" id="addFavouritsPanel" class="addFavouritsPanel" data-position="right" data-display="overlay" data-type="horizontal" data-mini="true">
+    <a href="#favouritePage" data-rel="close" class="ui-btn ui-btn-icon-left ui-icon-delete">Stäng</a>
+    <fieldset data-role="controlgroup" data-mini="true">
+        <legend>Recept:</legend>
+    </fieldset>
+</div>
+{% endblock %}
+{% block article %}
+<h1>Favoriter<a href="#addFavouritsPanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-right ui-btn-icon-left ui-icon-bullets ui-btn-icon-notext" id="addFavouritsPanelBtn">Välj favoriter</a>
+</h1>
+<div data-role="controlgroup" id="favouriteRecipes">
+</div>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+                <form>
+                    <input type="text" name="searchPattern" class="searchPattern" id="searchPattern" autofocus placeholder="Skriv in ingredienser eller titel">
+                </form>
+                <ul data-role="listview" id="searchResult" data-inset="true">
+                </ul>
+{% endblock %}
+{% block footer %}
+{% endblock %}

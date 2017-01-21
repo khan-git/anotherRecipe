@@ -1,0 +1,23 @@
+{% extends "main_template.html" %}
+{% block popupMenuIdA %}{{popupMenuId}}{% endblock %}
+{% block popupMenuIdD %}{{popupMenuId}}{% endblock %}
+{% block header %}
+    {{super()}}
+{% endblock %}
+{% block pageId %}{{pageId}}{% endblock %}
+{% block article %}
+        <h1>Logga in</h1>
+        <br>
+        <form action="/login" method="post">
+        <input type="text" placeholder="Namn" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Lösenord" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Login">
+        </form>
+      {% if error %}
+        <p class="error"><strong>Fel:</strong> {{ error }}
+      {% endif %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
