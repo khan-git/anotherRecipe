@@ -1,4 +1,4 @@
-# webRecipies
+# anotherbRecipie
 Web application for managing recipes at home.
 
 Dependencies:
